@@ -1,0 +1,42 @@
+{
+  "$comment": [
+    "The Stop hook is what turns 'the model thinks it is done' into 'a check passed'.",
+    "scripts/verify.sh exits 2 when any gate fails, and exit code 2 is the only one Claude Code",
+    "treats as blocking — exit 1 is logged and ignored. So a red gate physically prevents the",
+    "session from finishing, and Claude keeps working with the failure text attached.",
+    "On Windows without Git Bash, change the command to:",
+    "  powershell -NoProfile -File scripts/verify.ps1"
+  ],
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash scripts/verify.sh",
+            "timeout": 900
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Bash(npm run typecheck)",
+      "Bash(npm run lint)",
+      "Bash(npm test)",
+      "Bash(npm run check:clean)",
+      "Bash(npm run build)",
+      "Bash(npm install)",
+      "Bash(dotnet build:*)",
+      "Bash(dotnet test:*)",
+      "Bash(git status)",
+      "Bash(git diff:*)"
+    ],
+    "deny": [
+      "Read(./.env.local)",
+      "Read(./**/.env.local)"
+    ]
+  }
+}

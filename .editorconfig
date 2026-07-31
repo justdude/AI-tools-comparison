@@ -1,0 +1,37 @@
+# Analyzer severities are part of the gates, not a style preference.
+# If a rule genuinely does not apply, relax it HERE, in its own commit, with a comment saying why.
+# Never with an inline #pragma or eslint-disable in the code — that hides the decision.
+
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+
+[*.{cs,csx}]
+indent_size = 4
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.{cs,vb}]
+# --- these are errors, and the build runs with -warnaserror ---
+dotnet_diagnostic.CA2007.severity = error   # await without ConfigureAwait in library code
+dotnet_diagnostic.CA1848.severity = none    # LoggerMessage delegates: not worth it at this size
+dotnet_diagnostic.VSTHRD100.severity = error # avoid async void
+dotnet_diagnostic.VSTHRD002.severity = error # no .Result / .Wait()
+dotnet_diagnostic.IDE0055.severity = warning # formatting
+
+# nullable reference types are on and violations are errors
+dotnet_diagnostic.CS8600.severity = error
+dotnet_diagnostic.CS8602.severity = error
+dotnet_diagnostic.CS8603.severity = error
+dotnet_diagnostic.CS8604.severity = error
+dotnet_diagnostic.CS8618.severity = error
+
+[*.{ts,tsx}]
+indent_size = 2
