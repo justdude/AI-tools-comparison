@@ -1,0 +1,50 @@
+{
+  "name": "orders-grid",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "engines": { "node": "^20.19.0 || ^22.13.0 || >=24.0.0" },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --max-warnings 0",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --config vitest.config.ts",
+    "test:watch": "vitest --config vitest.config.ts",
+    "pretest:e2e": "vite build",
+    "test:e2e": "playwright test",
+    "seed": "node scripts/generate-seed.mjs",
+    "seed:check": "node scripts/generate-seed.mjs --check",
+    "check:clean": "node scripts/check-clean.mjs"
+  },
+  "dependencies": {
+    "devextreme": "26.1.3",
+    "devextreme-react": "26.1.3",
+    "exceljs": "^4.4.0",
+    "file-saver": "^2.0.5",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "^1.62.0",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^7.0.0",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/file-saver": "^2.0.7",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.4",
+    "eslint": "10.8.0",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "eslint-plugin-react-refresh": "0.5.3",
+    "globals": "17.8.0",
+    "jsdom": "^30.0.0",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "8.65.0",
+    "vite": "^8.1.5",
+    "vitest": "^4.1.10"
+  }
+}
